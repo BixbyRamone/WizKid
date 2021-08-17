@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Environment/AutoTiles/Ground-auto.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/Enemies/Troglodyte.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Environment/Assets/Sconce.tscn" type="PackedScene" id=4]
+
+[node name="TestEnv" type="Node2D"]
+
+[node name="Ground-auto" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( 196634, 0, 4, 196635, 0, 196609, 196636, 0, 196609, 196637, 0, 196609, 196638, 0, 196609, 196639, 0, 196609, 196640, 0, 196609, 196641, 0, 196609, 196642, 0, 196609, 196643, 0, 196609, 196644, 0, 196609, 196645, 0, 196609, 196646, 0, 196609, 196647, 0, 196609, 196648, 0, 7, 262170, 0, 65539, 262184, 0, 65539, 327706, 0, 65539, 327720, 0, 65539, 393242, 0, 65539, 393256, 0, 65539, 458778, 0, 65539, 458792, 0, 65539, 524314, 0, 65539, 524328, 0, 65539, 589850, 0, 196612, 589851, 0, 196609, 589852, 0, 196609, 589853, 0, 196609, 589854, 0, 196609, 589855, 0, 196609, 589856, 0, 196609, 589857, 0, 196609, 589858, 0, 196609, 589859, 0, 196609, 589860, 0, 196609, 589861, 0, 196609, 589862, 0, 196609, 589863, 0, 196609, 589864, 0, 196615 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1160, 264 )
+
+[node name="Troglodyte" parent="." instance=ExtResource( 3 )]
+position = Vector2( 984, 248 )
+
+[node name="Sconce" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1064, 280 )
+
+[node name="Sconce2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1208, 280 )

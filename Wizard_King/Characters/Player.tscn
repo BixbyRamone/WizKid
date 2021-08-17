@@ -1,0 +1,1035 @@
+[gd_scene load_steps=154 format=2]
+
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Player/Wiz_Kid-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://Characters/CameraMover.gd" type="Script" id=3]
+[ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Overlap/Hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Stats.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Characters/Flame.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sprites/Player/flame-whirl-Sheet.png" type="Texture" id=8]
+[ext_resource path="res://HealthUI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Characters/Enemies/Goose.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Sprites/Other/light.png" type="Texture" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 36, 36 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 8 )
+region = Rect2( 36, 0, 36, 36 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 8 )
+region = Rect2( 72, 0, 36, 36 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 36, 36, 36 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 8 )
+region = Rect2( 36, 36, 36, 36 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 8 )
+region = Rect2( 72, 36, 36, 36 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 11.5
+} ]
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 9.0
+height = 12.0
+
+[sub_resource type="Animation" id=10]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 25 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 21 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 33 ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 32 ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.75
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 18, 19, 34, 35, 36, 37, 38, 21 ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.75
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22, 23, 39, 40, 41, 42, 43, 25 ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 30, 31 ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 27, 28 ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=20]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 53 ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 50 ]
+}
+
+[sub_resource type="Animation" id=22]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 45 ]
+}
+
+[sub_resource type="Animation" id=23]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 44 ]
+}
+
+[sub_resource type="Animation" id=24]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 22, 23, 24 ]
+}
+
+[sub_resource type="Animation" id=25]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 18, 19, 20 ]
+}
+
+[sub_resource type="Animation" id=26]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 48 ]
+}
+
+[sub_resource type="Animation" id=27]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 47 ]
+}
+
+[sub_resource type="Animation" id=28]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15, 16, 17, 16, 15 ]
+}
+
+[sub_resource type="Animation" id=29]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 9, 10, 11, 10, 9 ]
+}
+
+[sub_resource type="Animation" id=30]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 25 ]
+}
+
+[sub_resource type="Animation" id=31]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 21 ]
+}
+
+[sub_resource type="Animation" id=32]
+length = 0.45
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 52, 53, 54 ]
+}
+
+[sub_resource type="Animation" id=33]
+length = 0.45
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 49, 50, 51 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "SkidLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "SkidLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=36]
+animation = "SkidRight"
+
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "SkidRight"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=38]
+blend_point_0/node = SubResource( 34 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 35 )
+blend_point_1/pos = Vector2( -0.1, 1 )
+blend_point_2/node = SubResource( 36 )
+blend_point_2/pos = Vector2( 0.1, 1 )
+blend_point_3/node = SubResource( 37 )
+blend_point_3/pos = Vector2( 1, 0 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=39]
+animation = "HoldFlameL"
+
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "HoldFlameL"
+
+[sub_resource type="AnimationNodeAnimation" id=41]
+animation = "HoldFlameR"
+
+[sub_resource type="AnimationNodeAnimation" id=42]
+animation = "HoldFlameR"
+
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "HoldFlameR"
+
+[sub_resource type="AnimationNodeAnimation" id=44]
+animation = "HoldFlameL"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=45]
+blend_point_0/node = SubResource( 39 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 40 )
+blend_point_1/pos = Vector2( -0.1, 1 )
+blend_point_2/node = SubResource( 41 )
+blend_point_2/pos = Vector2( 0.1, 1 )
+blend_point_3/node = SubResource( 42 )
+blend_point_3/pos = Vector2( 1, 0 )
+blend_point_4/node = SubResource( 43 )
+blend_point_4/pos = Vector2( 0.1, -1 )
+blend_point_5/node = SubResource( 44 )
+blend_point_5/pos = Vector2( -0.1, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=46]
+animation = "FlipLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=47]
+animation = "FlipLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=48]
+animation = "FlipRight"
+
+[sub_resource type="AnimationNodeAnimation" id=49]
+animation = "FlipRight"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=50]
+blend_point_0/node = SubResource( 46 )
+blend_point_0/pos = Vector2( -0.1, 0.1 )
+blend_point_1/node = SubResource( 47 )
+blend_point_1/pos = Vector2( 0.1, -0.8 )
+blend_point_2/node = SubResource( 48 )
+blend_point_2/pos = Vector2( -0.1, -0.8 )
+blend_point_3/node = SubResource( 49 )
+blend_point_3/pos = Vector2( 0.1, 0.1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=51]
+animation = "IdleLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=52]
+animation = "IdleRight"
+
+[sub_resource type="AnimationNodeAnimation" id=53]
+animation = "IdleLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=54]
+animation = "IdleRight"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=55]
+blend_point_0/node = SubResource( 51 )
+blend_point_0/pos = Vector2( -0.3, 0 )
+blend_point_1/node = SubResource( 52 )
+blend_point_1/pos = Vector2( 0.3, 0 )
+blend_point_2/node = SubResource( 53 )
+blend_point_2/pos = Vector2( -0.1, -0.3 )
+blend_point_3/node = SubResource( 54 )
+blend_point_3/pos = Vector2( 0.1, -0.3 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=56]
+animation = "DuckLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=57]
+animation = "DuckRight"
+
+[sub_resource type="AnimationNodeAnimation" id=58]
+animation = "DuckLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=59]
+animation = "DuckRight"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=60]
+blend_point_0/node = SubResource( 56 )
+blend_point_0/pos = Vector2( -0.1, 0.7 )
+blend_point_1/node = SubResource( 57 )
+blend_point_1/pos = Vector2( 0.1, 0.7 )
+blend_point_2/node = SubResource( 58 )
+blend_point_2/pos = Vector2( -0.2, 0 )
+blend_point_3/node = SubResource( 59 )
+blend_point_3/pos = Vector2( 0.2, 0 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=61]
+animation = "LookUpL"
+
+[sub_resource type="AnimationNodeAnimation" id=62]
+animation = "LookUpL"
+
+[sub_resource type="AnimationNodeAnimation" id=63]
+animation = "LookUpR"
+
+[sub_resource type="AnimationNodeAnimation" id=64]
+animation = "LookUpR"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=65]
+blend_point_0/node = SubResource( 61 )
+blend_point_0/pos = Vector2( -0.2, 0.1 )
+blend_point_1/node = SubResource( 62 )
+blend_point_1/pos = Vector2( -0.1, -0.7 )
+blend_point_2/node = SubResource( 63 )
+blend_point_2/pos = Vector2( 0.1, -0.7 )
+blend_point_3/node = SubResource( 64 )
+blend_point_3/pos = Vector2( 0.2, 0.1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=66]
+animation = "IdleSwimL"
+
+[sub_resource type="AnimationNodeAnimation" id=67]
+animation = "IdleSwimL"
+
+[sub_resource type="AnimationNodeAnimation" id=68]
+animation = "IdleSwimR"
+
+[sub_resource type="AnimationNodeAnimation" id=69]
+animation = "IdleSwimR"
+
+[sub_resource type="AnimationNodeAnimation" id=70]
+animation = "IdleSwimR"
+
+[sub_resource type="AnimationNodeAnimation" id=71]
+animation = "IdleSwimL"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=72]
+blend_point_0/node = SubResource( 66 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 67 )
+blend_point_1/pos = Vector2( -0.1, 0.1 )
+blend_point_2/node = SubResource( 68 )
+blend_point_2/pos = Vector2( 0.1, 0.1 )
+blend_point_3/node = SubResource( 69 )
+blend_point_3/pos = Vector2( 1, 0 )
+blend_point_4/node = SubResource( 70 )
+blend_point_4/pos = Vector2( 0.1, -0.1 )
+blend_point_5/node = SubResource( 71 )
+blend_point_5/pos = Vector2( -0.1, -0.1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=73]
+animation = "IsHitLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=74]
+animation = "IsHitLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=75]
+animation = "IsHitRight"
+
+[sub_resource type="AnimationNodeAnimation" id=76]
+animation = "IsHitRight"
+
+[sub_resource type="AnimationNodeAnimation" id=77]
+animation = "IsHitRight"
+
+[sub_resource type="AnimationNodeAnimation" id=78]
+animation = "IsHitLeft"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=79]
+blend_point_0/node = SubResource( 73 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 74 )
+blend_point_1/pos = Vector2( -0.1, 0.3 )
+blend_point_2/node = SubResource( 75 )
+blend_point_2/pos = Vector2( 0.1, 0.3 )
+blend_point_3/node = SubResource( 76 )
+blend_point_3/pos = Vector2( 1, 0 )
+blend_point_4/node = SubResource( 77 )
+blend_point_4/pos = Vector2( 0.1, -0.2 )
+blend_point_5/node = SubResource( 78 )
+blend_point_5/pos = Vector2( -0.1, -0.2 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=80]
+animation = "DescendRight"
+
+[sub_resource type="AnimationNodeAnimation" id=81]
+animation = "JumpRight"
+
+[sub_resource type="AnimationNodeAnimation" id=82]
+animation = "JumpRight"
+
+[sub_resource type="AnimationNodeAnimation" id=83]
+animation = "JumpLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=84]
+animation = "JumpLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=85]
+animation = "DescendLeft"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=86]
+blend_point_0/node = SubResource( 80 )
+blend_point_0/pos = Vector2( 0.1, 0.2 )
+blend_point_1/node = SubResource( 81 )
+blend_point_1/pos = Vector2( 0.3, 0 )
+blend_point_2/node = SubResource( 82 )
+blend_point_2/pos = Vector2( 0.3, -0.6 )
+blend_point_3/node = SubResource( 83 )
+blend_point_3/pos = Vector2( -0.3, -0.6 )
+blend_point_4/node = SubResource( 84 )
+blend_point_4/pos = Vector2( -0.3, 0 )
+blend_point_5/node = SubResource( 85 )
+blend_point_5/pos = Vector2( -0.1, 0.2 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=87]
+animation = "RunLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=88]
+animation = "DuckLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=89]
+animation = "DuckRight"
+
+[sub_resource type="AnimationNodeAnimation" id=90]
+animation = "RunRight"
+
+[sub_resource type="AnimationNodeAnimation" id=91]
+animation = "LookUpR"
+
+[sub_resource type="AnimationNodeAnimation" id=92]
+animation = "LookUpL"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=93]
+blend_point_0/node = SubResource( 87 )
+blend_point_0/pos = Vector2( -0.3, 0 )
+blend_point_1/node = SubResource( 88 )
+blend_point_1/pos = Vector2( -0.1, 1 )
+blend_point_2/node = SubResource( 89 )
+blend_point_2/pos = Vector2( 0.1, 1 )
+blend_point_3/node = SubResource( 90 )
+blend_point_3/pos = Vector2( 0.3, 0 )
+blend_point_4/node = SubResource( 91 )
+blend_point_4/pos = Vector2( 0.1, -1 )
+blend_point_5/node = SubResource( 92 )
+blend_point_5/pos = Vector2( -0.1, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=94]
+animation = "SwimLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=95]
+animation = "SwimLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=96]
+animation = "SwimRight"
+
+[sub_resource type="AnimationNodeAnimation" id=97]
+animation = "SwimRight"
+
+[sub_resource type="AnimationNodeAnimation" id=98]
+animation = "SwimRight"
+
+[sub_resource type="AnimationNodeAnimation" id=99]
+animation = "SwimLeft"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=100]
+blend_point_0/node = SubResource( 94 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 95 )
+blend_point_1/pos = Vector2( -0.1, 0.1 )
+blend_point_2/node = SubResource( 96 )
+blend_point_2/pos = Vector2( 0.1, 0.1 )
+blend_point_3/node = SubResource( 97 )
+blend_point_3/pos = Vector2( 1, 0 )
+blend_point_4/node = SubResource( 98 )
+blend_point_4/pos = Vector2( 0.1, -0.1 )
+blend_point_5/node = SubResource( 99 )
+blend_point_5/pos = Vector2( -0.1, -0.1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=101]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=102]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=103]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=104]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=105]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=106]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=107]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=108]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=109]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=110]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=111]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=112]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=113]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=114]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=115]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=116]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=117]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=118]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=119]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=120]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=121]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=122]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=123]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=124]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=125]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=126]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=127]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=128]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=129]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=130]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=131]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=132]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=133]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=134]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=135]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=136]
+
+[sub_resource type="AnimationNodeStateMachine" id=137]
+states/Fall/node = SubResource( 38 )
+states/Fall/position = Vector2( 676.75, 224 )
+states/Flame/node = SubResource( 45 )
+states/Flame/position = Vector2( 238, 117 )
+states/Flip/node = SubResource( 50 )
+states/Flip/position = Vector2( 840, 126.5 )
+states/Idle/node = SubResource( 55 )
+states/Idle/position = Vector2( 359, 47 )
+states/IdleDuck/node = SubResource( 60 )
+states/IdleDuck/position = Vector2( 188.5, 46.625 )
+states/IdleLookUp/node = SubResource( 65 )
+states/IdleLookUp/position = Vector2( 144.868, -39.3353 )
+states/IdleSwim/node = SubResource( 72 )
+states/IdleSwim/position = Vector2( 563.368, -106.443 )
+states/IsHit/node = SubResource( 79 )
+states/IsHit/position = Vector2( 383.135, -39.8742 )
+states/Jump/node = SubResource( 86 )
+states/Jump/position = Vector2( 345.25, 243.5 )
+states/Run/node = SubResource( 93 )
+states/Run/position = Vector2( 666, 26.625 )
+states/Swim/node = SubResource( 100 )
+states/Swim/position = Vector2( 735.368, -92.4431 )
+transitions = [ "Idle", "Run", SubResource( 101 ), "Run", "Idle", SubResource( 102 ), "Idle", "Jump", SubResource( 103 ), "Jump", "Idle", SubResource( 104 ), "Run", "Jump", SubResource( 105 ), "Jump", "Run", SubResource( 106 ), "Run", "Fall", SubResource( 107 ), "Jump", "Fall", SubResource( 108 ), "Fall", "Idle", SubResource( 109 ), "Fall", "Run", SubResource( 110 ), "Idle", "Fall", SubResource( 111 ), "Run", "Flip", SubResource( 112 ), "Flip", "Fall", SubResource( 113 ), "Jump", "Flip", SubResource( 114 ), "Flip", "Run", SubResource( 115 ), "Flip", "Idle", SubResource( 116 ), "Idle", "Flame", SubResource( 117 ), "Flame", "Idle", SubResource( 118 ), "Run", "Flame", SubResource( 119 ), "Flame", "Run", SubResource( 120 ), "Flame", "Jump", SubResource( 121 ), "Jump", "Flame", SubResource( 122 ), "Flame", "Fall", SubResource( 123 ), "Fall", "Flame", SubResource( 124 ), "Flame", "Flip", SubResource( 125 ), "Flip", "Flame", SubResource( 126 ), "Idle", "IdleDuck", SubResource( 127 ), "IdleDuck", "Idle", SubResource( 128 ), "IsHit", "Idle", SubResource( 129 ), "Idle", "IsHit", SubResource( 130 ), "Idle", "IdleSwim", SubResource( 131 ), "IdleSwim", "Idle", SubResource( 132 ), "IdleSwim", "Swim", SubResource( 133 ), "Swim", "IdleSwim", SubResource( 134 ), "Idle", "IdleLookUp", SubResource( 135 ), "IdleLookUp", "Idle", SubResource( 136 ) ]
+start_node = "Idle"
+graph_offset = Vector2( 60.8684, -159.8 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=138]
+
+[sub_resource type="CapsuleShape2D" id=139]
+radius = 1.9959
+
+[sub_resource type="CapsuleShape2D" id=140]
+radius = 8.93217
+height = 9.09966
+
+[sub_resource type="CircleShape2D" id=141]
+radius = 22.6838
+
+[sub_resource type="RectangleShape2D" id=142]
+extents = Vector2( 10, 80.1861 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 175.251, 72.832 )
+collision_layer = 2
+collision_mask = 289
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 126.125 ]
+}
+Goose = ExtResource( 10 )
+
+[node name="CameraMover" type="KinematicBody2D" parent="."]
+visible = false
+collision_layer = 64
+collision_mask = 128
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraMover"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="CameraMover"]
+visible = false
+current = true
+offset_v = -1.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CameraMover/Camera2D"]
+layer = 2
+
+[node name="HealthUI" parent="CameraMover/Camera2D/CanvasLayer" instance=ExtResource( 9 )]
+margin_right = 70.0
+margin_bottom = 15.0
+
+[node name="Timer" type="Timer" parent="CameraMover"]
+wait_time = 0.6
+one_shot = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.25, 0 )
+texture = ExtResource( 2 )
+vframes = 7
+hframes = 8
+frame = 3
+
+[node name="Flame" parent="Sprite" instance=ExtResource( 7 )]
+
+[node name="AnimatedSpriteR" parent="Sprite/Flame" index="0"]
+visible = false
+position = Vector2( 14, -1 )
+frame = 3
+
+[node name="AnimatedSpriteL" parent="Sprite/Flame" index="1"]
+visible = false
+position = Vector2( -14, -1 )
+frame = 2
+
+[node name="FireWhirl" type="AnimatedSprite" parent="Sprite"]
+visible = false
+position = Vector2( -0.25, 0 )
+frames = SubResource( 8 )
+frame = 2
+
+[node name="Light2D" type="Light2D" parent="Sprite/FireWhirl"]
+position = Vector2( 0, -8 )
+texture = ExtResource( 11 )
+texture_scale = 0.75
+color = Color( 0.635294, 0.470588, 0.419608, 1 )
+energy = 1.25
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 9 )
+one_way_collision_margin = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/DescendLeft = SubResource( 10 )
+anims/DescendRight = SubResource( 11 )
+anims/DuckLeft = SubResource( 12 )
+anims/DuckRight = SubResource( 13 )
+anims/FlipLeft = SubResource( 14 )
+anims/FlipRight = SubResource( 15 )
+anims/HoldFlameL = SubResource( 16 )
+anims/HoldFlameR = SubResource( 17 )
+anims/IdleLeft = SubResource( 18 )
+anims/IdleRight = SubResource( 19 )
+anims/IdleSwimL = SubResource( 20 )
+anims/IdleSwimR = SubResource( 21 )
+anims/IsHitLeft = SubResource( 22 )
+anims/IsHitRight = SubResource( 23 )
+anims/JumpLeft = SubResource( 24 )
+anims/JumpRight = SubResource( 25 )
+anims/LookUpL = SubResource( 26 )
+anims/LookUpR = SubResource( 27 )
+anims/RunLeft = SubResource( 28 )
+anims/RunRight = SubResource( 29 )
+anims/SkidLeft = SubResource( 30 )
+anims/SkidRight = SubResource( 31 )
+anims/SwimLeft = SubResource( 32 )
+anims/SwimRight = SubResource( 33 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 137 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 138 )
+parameters/Fall/blend_position = Vector2( 0, 0 )
+parameters/Flame/blend_position = Vector2( 0, 0 )
+parameters/Flip/blend_position = Vector2( 0, 0 )
+parameters/Idle/blend_position = Vector2( 0, 0 )
+parameters/IdleDuck/blend_position = Vector2( 0, 0 )
+parameters/IdleLookUp/blend_position = Vector2( 0, 0 )
+parameters/IdleSwim/blend_position = Vector2( 0, 0 )
+parameters/IsHit/blend_position = Vector2( 0, 0 )
+parameters/Jump/blend_position = Vector2( 0, 0 )
+parameters/Run/blend_position = Vector2( 0, 0 )
+parameters/Swim/blend_position = Vector2( 0, 0 )
+
+[node name="Breath" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Look" type="Timer" parent="."]
+wait_time = 0.85
+one_shot = true
+
+[node name="JumpAssist" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Hitbox" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 0, 14 )
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+rotation = 1.5708
+shape = SubResource( 139 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 5 )]
+visible = false
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, 1 )
+shape = SubResource( 140 )
+
+[node name="FireWhirlHitBox" parent="." instance=ExtResource( 4 )]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="FireWhirlHitBox" index="0"]
+shape = SubResource( 141 )
+disabled = true
+
+[node name="Stats" parent="." instance=ExtResource( 6 )]
+max_health = 5
+
+[node name="CameraCollider" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 128
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraCollider"]
+position = Vector2( 50, 0 )
+shape = SubResource( 142 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CameraCollider"]
+position = Vector2( -50, 0 )
+shape = SubResource( 142 )
+[connection signal="timeout" from="CameraMover/Timer" to="CameraMover" method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="Sprite/FireWhirl" to="." method="_on_FireWhirl_animation_finished"]
+[connection signal="timeout" from="Breath" to="." method="_on_Breath_timeout"]
+[connection signal="timeout" from="Look" to="." method="_on_Look_timeout"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
+
+[editable path="Sprite/Flame"]
+
+[editable path="Hitbox"]
+
+[editable path="Hurtbox"]
+
+[editable path="FireWhirlHitBox"]

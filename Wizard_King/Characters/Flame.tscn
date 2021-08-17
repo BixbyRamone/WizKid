@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Sprites/Other/flame-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Other/light.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 24, 0, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "flame",
+"speed": 9.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 4.05, 4.1375 )
+
+[node name="Flame" type="Node2D"]
+
+[node name="AnimatedSpriteR" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+animation = "flame"
+frame = 1
+playing = true
+
+[node name="FlameArea" type="Area2D" parent="AnimatedSpriteR"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSpriteR/FlameArea"]
+shape = SubResource( 6 )
+
+[node name="Light2D" type="Light2D" parent="AnimatedSpriteR"]
+position = Vector2( 0, -8 )
+texture = ExtResource( 2 )
+texture_scale = 0.5
+color = Color( 0.866667, 0.635294, 0.556863, 1 )
+shadow_enabled = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AnimatedSpriteL" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+animation = "flame"
+playing = true
+
+[node name="FlameArea" type="Area2D" parent="AnimatedSpriteL"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSpriteL/FlameArea"]
+shape = SubResource( 6 )
+
+[node name="Light2D2" type="Light2D" parent="AnimatedSpriteL"]
+position = Vector2( 0, -8 )
+texture = ExtResource( 2 )
+texture_scale = 0.5
+color = Color( 0.866667, 0.635294, 0.556863, 1 )
+shadow_enabled = true
+__meta__ = {
+"_editor_description_": ""
+}

@@ -1,0 +1,206 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Sprites/Enemies/goose.png" type="Texture" id=1]
+[ext_resource path="res://Goose.gd" type="Script" id=2]
+[ext_resource path="res://Characters/Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Overlap/Hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Stats.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 8.82503
+height = 6.75
+
+[sub_resource type="Animation" id=2]
+resource_name = "Flap"
+length = 0.5
+loop = true
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.175, 0.25, 0.375, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7, 6, 6 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Float"
+length = 0.5
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 9 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "FloatIdle"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.5
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.5
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 60.725
+height = 117.95
+
+[sub_resource type="CapsuleShape2D" id=9]
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 9.14996
+height = 13.3501
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 2.2252, 2.60004 )
+
+[node name="Goose" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 2147483649
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+vframes = 3
+hframes = 4
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2.8 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Flap = SubResource( 2 )
+anims/Float = SubResource( 3 )
+anims/FloatIdle = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Threat = SubResource( 6 )
+anims/Walk = SubResource( 7 )
+
+[node name="DirectionTimer" type="Timer" parent="."]
+wait_time = 3.5
+one_shot = true
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+modulate = Color( 1, 1, 1, 0.498039 )
+rotation = 1.5708
+shape = SubResource( 8 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 4 )]
+visible = false
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+rotation = 1.5708
+shape = SubResource( 9 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 5 )]
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+rotation = 1.5708
+shape = SubResource( 10 )
+
+[node name="Stats" parent="." instance=ExtResource( 6 )]
+max_health = 5
+
+[node name="ResurfaceCollision" type="StaticBody2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResurfaceCollision"]
+shape = SubResource( 11 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="RemovalTimer" type="Timer" parent="."]
+wait_time = 3.0
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_DirectionTimer_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
+[connection signal="viewport_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_entered"]
+[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]
+[connection signal="timeout" from="RemovalTimer" to="." method="_on_RemovalTimer_timeout"]
+
+[editable path="PlayerDetectionZone"]
+
+[editable path="Hurtbox"]
+
+[editable path="Hitbox"]

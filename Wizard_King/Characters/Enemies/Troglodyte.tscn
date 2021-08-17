@@ -1,0 +1,202 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Sprites/Enemies/gremlin-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Enemies/Troglodyte.gd" type="Script" id=2]
+[ext_resource path="res://Stats.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Characters/Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Characters/Enemies/AreaDetectionZone.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 6.73895
+height = 29.1126
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 13.6892
+height = 14.914
+
+[sub_resource type="Animation" id=3]
+resource_name = "Blow"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 12, 13 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Crawl"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 8, 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "CrawlIdle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Jump"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 14 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Snuff"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Walk"
+length = 1.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 3, 0, 5, 6, 5, 0 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 19.7825
+height = 68.4683
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 79.7722, 23.1623 )
+
+[node name="Troglodyte" type="KinematicBody2D"]
+collision_layer = 16
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+vframes = 4
+hframes = 4
+frame = 8
+
+[node name="CollisionShapeStand" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2.8 )
+shape = SubResource( 1 )
+
+[node name="CollisionShapeCrawl" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 10 )
+rotation = 1.5708
+shape = SubResource( 2 )
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Blow = SubResource( 3 )
+anims/Crawl = SubResource( 4 )
+anims/CrawlIdle = SubResource( 5 )
+anims/Idle = SubResource( 6 )
+anims/Jump = SubResource( 7 )
+anims/Snuff = SubResource( 8 )
+anims/Walk = SubResource( 9 )
+
+[node name="Stats" parent="." instance=ExtResource( 3 )]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="RemovalTimer" type="Timer" parent="."]
+
+[node name="DirectionTimer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="Position2D" type="Position2D" parent="."]
+
+[node name="PlayerDetectionZone" parent="Position2D" instance=ExtResource( 4 )]
+
+[node name="CollisionShape2D" parent="Position2D/PlayerDetectionZone" index="0"]
+position = Vector2( -40, 0 )
+rotation = 1.5708
+shape = SubResource( 10 )
+
+[node name="FlipTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="AreaDetectionZone" parent="." instance=ExtResource( 5 )]
+
+[node name="CollisionShape2D" parent="AreaDetectionZone" index="0"]
+position = Vector2( -53, 0.176777 )
+shape = SubResource( 11 )
+
+[node name="FloorChecker" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 30 )
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_DirectionTimer_timeout"]
+[connection signal="timeout" from="FlipTimer" to="." method="_on_FlipTimer_timeout"]
+
+[editable path="Position2D/PlayerDetectionZone"]
+
+[editable path="AreaDetectionZone"]
